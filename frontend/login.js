@@ -20,9 +20,9 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         if (resposta.ok) {
             mensagemErro.style.color = '#4caf50';
             mensagemErro.textContent = resultado.mensagem;
-            // Salva o id do barbeiro logado para uso futuro
+            
             localStorage.setItem('barbeiro_id', resultado.barbeiro_id);
-            // Redireciona para a tela de agendamento após 1 segundo
+            
             setTimeout(() => {
                 window.location.href = 'agendamento.html';
             }, 1000);

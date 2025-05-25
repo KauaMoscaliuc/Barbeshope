@@ -14,7 +14,7 @@ document.getElementById('agendamentoForm').addEventListener('submit', async func
     }
 
     try {
-        // 1. Cadastrar cliente
+        
         const respostaCliente = await fetch('http://localhost:5000/api/clientes', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -27,8 +27,7 @@ document.getElementById('agendamentoForm').addEventListener('submit', async func
             return;
         }
 
-        // 2. Buscar o cliente cadastrado (pelo e-mail)
-        // (Ideal: backend retornar o id do cliente, mas para simplicidade, buscar por e-mail)
+        
         const clienteId = await buscarClienteIdPorEmail(email);
         if (!clienteId) {
             mensagem.style.color = '#ff5252';
@@ -36,7 +35,7 @@ document.getElementById('agendamentoForm').addEventListener('submit', async func
             return;
         }
 
-        // 3. Agendar horário (barbeiro_id fixo = 1 para teste)
+        
         const barbeiroId = localStorage.getItem('barbeiro_id');
         const respostaAgendamento = await fetch('http://localhost:5000/api/agendamentos', {
             method: 'POST',
@@ -58,7 +57,7 @@ document.getElementById('agendamentoForm').addEventListener('submit', async func
     }
 });
 
-// Função auxiliar para buscar o id do cliente pelo e-mail
+
 async function buscarClienteIdPorEmail(email) {
     try {
         const resposta = await fetch('http://localhost:5000/api/clientes_todos');
@@ -70,13 +69,13 @@ async function buscarClienteIdPorEmail(email) {
     }
 }
 
-// Botão de lupa para consultar agendamentos
+
 const btnLupa = document.getElementById('btn-lupa');
 const modal = document.getElementById('modal-agendamentos');
 const fecharModal = document.getElementById('fechar-modal');
 const listaAgendamentos = document.getElementById('lista-agendamentos');
 
-// Adicionar campo de data no modal (se não existir)
+
 if (!document.getElementById('filtro-data')) {
     const label = document.createElement('label');
     label.setAttribute('for', 'filtro-data');
@@ -93,10 +92,10 @@ if (!document.getElementById('filtro-data')) {
     lista.parentNode.insertBefore(inputData, lista);
 }
 
-// Função para carregar os agendamentos do barbeiro filtrando por data no backend
+
 async function carregarAgendamentosBarbeiro() {
     const barbeiroId = localStorage.getItem('barbeiro_id');
-    const filtroData = document.getElementById('filtro-data').value; // yyyy-mm-dd
+    const filtroData = document.getElementById('filtro-data').value; 
 
     if (!barbeiroId) {
         console.log('Barbeiro não identificado');
@@ -110,16 +109,16 @@ async function carregarAgendamentosBarbeiro() {
         if (filtroData) {
             url = `http://localhost:5000/api/agendamentos_barbeiro_data/${barbeiroId}?data=${filtroData}`;
         }
-        console.log('Buscando agendamentos...', url); // Debug
+        console.log('Buscando agendamentos...', url); 
         const resposta = await fetch(url);
-        console.log('Resposta recebida:', resposta); // Debug
+        console.log('Resposta recebida:', resposta); 
         
         if (!resposta.ok) {
             throw new Error(`Erro HTTP: ${resposta.status}`);
         }
 
         const agendamentos = await resposta.json();
-        console.log('Agendamentos:', agendamentos); // Debug
+        console.log('Agendamentos:', agendamentos); 
         
         const listaAgendamentos = document.getElementById('lista-agendamentos');
         listaAgendamentos.innerHTML = '';
@@ -142,7 +141,7 @@ async function carregarAgendamentosBarbeiro() {
             });
         }
 
-        // Depois de renderizar, adicionar o evento de clique:
+        
         document.querySelectorAll('.cancelar-agendamento').forEach(btn => {
             btn.addEventListener('click', async function(e) {
                 const li = e.target.closest('.agendamento-item');
@@ -170,25 +169,25 @@ async function carregarAgendamentosBarbeiro() {
     }
 }
 
-// Carregar agendamentos quando a página for carregada
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Página carregada, verificando login...'); // Debug
+    console.log('Página carregada, verificando login...'); 
     const barbeiroId = localStorage.getItem('barbeiro_id');
     if (barbeiroId) {
-        console.log('Barbeiro logado, carregando agendamentos...'); // Debug
+        console.log('Barbeiro logado, carregando agendamentos...'); 
         carregarAgendamentosBarbeiro();
     } else {
-        console.log('Nenhum barbeiro logado'); // Debug
+        console.log('Nenhum barbeiro logado'); 
     }
 });
 
-// Atualizar a função do botão lupa para usar a nova função e mostrar o modal
+
 btnLupa.addEventListener('click', function() {
     carregarAgendamentosBarbeiro();
     modal.style.display = 'flex';
 });
 
-// Atualizar ao mudar a data
+
 const filtroDataInput = document.getElementById('filtro-data');
 filtroDataInput.addEventListener('change', carregarAgendamentosBarbeiro);
 
@@ -196,14 +195,14 @@ fecharModal.addEventListener('click', function() {
     modal.style.display = 'none';
 });
 
-// Fecha o modal ao clicar fora do conteúdo
+
 modal.addEventListener('click', function(e) {
     if (e.target === modal) {
         modal.style.display = 'none';
     }
 });
 
-// Adicionar estilos CSS
+
 const style = document.createElement('style');
 style.textContent = `
     .agendamento-item {

@@ -18,7 +18,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
         return;
     }
 
-    // Envio para o backend Flask
+    
     try {
         const resposta = await fetch('http://localhost:5000/api/barbeiros', {
             method: 'POST',
@@ -41,7 +41,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 });
 
 document.getElementById('voltar-login').addEventListener('click', function(e) {
-    // Apenas navega para login.html
+    
 });
 
 document.getElementById('loginForm').addEventListener('submit', async function(e) {
@@ -60,7 +60,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         if (resposta.ok) {
             mensagemErro.style.color = '#4caf50';
             mensagemErro.textContent = resultado.mensagem;
-            // Redirecionar para o painel do barbeiro, se desejar
+            
         } else {
             mensagemErro.style.color = '#ff5252';
             mensagemErro.textContent = resultado.erro || 'Login ou senha inválidos.';

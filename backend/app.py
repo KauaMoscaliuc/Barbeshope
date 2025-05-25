@@ -10,11 +10,11 @@ app.config.from_object(Config)
 CORS(app)
 db.init_app(app)
 
-# Inicializa o banco de dados
+
 with app.app_context():
     db.create_all()
 
-# Rota para cadastro de barbeiro
+
 @app.route('/api/barbeiros', methods=['POST'])
 def cadastrar_barbeiro():
     data = request.json
@@ -33,7 +33,7 @@ def cadastrar_barbeiro():
         db.session.rollback()
         return jsonify({'erro': str(e)}), 400
 
-# Rota para cadastro de cliente
+
 @app.route('/api/clientes', methods=['POST'])
 def cadastrar_cliente():
     data = request.json
@@ -50,7 +50,7 @@ def cadastrar_cliente():
         db.session.rollback()
         return jsonify({'erro': str(e)}), 400
 
-# Rota para agendamento
+
 @app.route('/api/agendamentos', methods=['POST'])
 def agendar():
     data = request.json
@@ -68,7 +68,7 @@ def agendar():
         db.session.rollback()
         return jsonify({'erro': str(e)}), 400
 
-# Rota de login
+
 @app.route('/api/login', methods=['POST'])
 def login():
     data = request.json
@@ -80,7 +80,7 @@ def login():
     else:
         return jsonify({'erro': 'Login ou senha inválidos.'}), 401
 
-# Rota para listar todos os clientes (auxiliar para agendamento)
+
 @app.route('/api/clientes_todos', methods=['GET'])
 def listar_clientes():
     clientes = Cliente.query.all()
@@ -89,7 +89,7 @@ def listar_clientes():
         for c in clientes
     ])
 
-# Rota para listar agendamentos de um barbeiro
+
 @app.route('/api/agendamentos_barbeiro/<int:barbeiro_id>', methods=['GET'])
 def agendamentos_barbeiro(barbeiro_id):
     agendamentos = Agendamento.query.filter_by(barbeiro_id=barbeiro_id).all()
@@ -106,7 +106,7 @@ def agendamentos_barbeiro(barbeiro_id):
         })
     return jsonify(resultado)
 
-# Rota para listar agendamentos de um barbeiro em uma data específica
+
 @app.route('/api/agendamentos_barbeiro_data/<int:barbeiro_id>', methods=['GET'])
 def agendamentos_barbeiro_data(barbeiro_id):
     data_str = request.args.get('data')  # espera yyyy-mm-dd
@@ -130,7 +130,7 @@ def agendamentos_barbeiro_data(barbeiro_id):
         })
     return jsonify(resultado)
 
-# Rota para deletar (cancelar) agendamento
+
 @app.route('/api/agendamentos/<int:agendamento_id>', methods=['DELETE'])
 def deletar_agendamento(agendamento_id):
     agendamento = Agendamento.query.get(agendamento_id)
