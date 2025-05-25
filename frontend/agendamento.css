@@ -1,0 +1,266 @@
+.agendamento-container {
+    background: #333;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    width: 100%;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+
+body {
+    background: url('fundo agendamento.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+}
+
+.agendamento-container h2 {
+    margin-bottom: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.agendamento-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #fff;
+    font-size: 16px;
+}
+
+.agendamento-container button {
+    width: 100%;
+    padding: 12px;
+    background: #ffb300;
+    color: #222;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.agendamento-container button:hover {
+    background: #ffa000;
+}
+
+#voltar {
+    color: #ffb300;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    font-size: 15px;
+}
+
+#voltar:hover {
+    text-decoration: underline;
+}
+
+#mensagem-agendamento {
+    color: #ff5252;
+    margin-top: 12px;
+    font-size: 14px;
+    min-height: 18px;
+    text-align: center;
+}
+
+/* Botão de lupa */
+#btn-lupa {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+}
+#btn-lupa svg {
+    transition: transform 0.2s;
+}
+#btn-lupa:hover svg {
+    transform: scale(1.1);
+    stroke: #ffa000;
+}
+
+/* Modal de agendamentos */
+.modal-agendamentos {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,58,93,0.25); /* azul escuro translúcido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+.modal-content {
+    background: rgba(255,255,255,0.97);
+    padding: 32px 24px 24px 24px;
+    border-radius: 14px;
+    min-width: 320px;
+    max-width: 90vw;
+    color: #1a3a5d;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(26,58,93,0.18);
+}
+.fechar-modal {
+    position: absolute;
+    top: 10px;
+    right: 18px;
+    font-size: 28px;
+    color: #e74c3c;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.fechar-modal:hover {
+    color: #1a3a5d;
+}
+#lista-agendamentos {
+    list-style: none;
+    padding: 0;
+    margin: 18px 0 0 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+#lista-agendamentos li {
+    background: #1a3a5d;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    border-left: 4px solid #e74c3c;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(26,58,93,0.08);
+}
+.cancelar-agendamento {
+    color: #e74c3c;
+    font-size: 1.5em;
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    z-index: 2;
+}
+.cancelar-agendamento:hover {
+    color: #b71c1c;
+}
+.modal-content h3 {
+    color: #1a3a5d;
+    margin-bottom: 16px;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+#filtro-data {
+    background: #fff;
+    color: #1a3a5d;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 6px;
+    padding: 6px 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    transition: border 0.2s;
+}
+#filtro-data:focus {
+    border: 1.5px solid #e74c3c;
+    outline: none;
+}
+.sem-agendamentos {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+}
+.erro {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+}
+
+.agendamento-container, .form-container, form, #agendamentoForm {
+    background: rgba(255,255,255,0.92);
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 38px 32px 28px 32px;
+    max-width: 400px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#agendamentoForm h2, .agendamento-container h2 {
+    margin-bottom: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1a3a5d; /* azul escuro da imagem */
+    font-size: 2rem;
+}
+
+#agendamentoForm input, #agendamentoForm select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 6px;
+    background: #eaf3fa; /* azul claro suave */
+    color: #1a3a5d;
+    font-size: 1rem;
+    transition: border 0.2s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#agendamentoForm input:focus, #agendamentoForm select:focus {
+    border: 1.5px solid #e74c3c; /* vermelho da imagem */
+    background: #fff;
+}
+
+#agendamentoForm button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #e74c3c 0%, #1a3a5d 100%); /* vermelho para azul */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(26,58,93,0.08);
+}
+
+#agendamentoForm button:hover {
+    background: linear-gradient(90deg, #1a3a5d 0%, #e74c3c 100%);
+    box-shadow: 0 4px 16px rgba(26,58,93,0.12);
+}
+
+#mensagem-agendamento {
+    color: #e74c3c;
+    margin-top: 12px;
+    font-size: 14px;
+    min-height: 18px;
+    text-align: center;
+    background: transparent;
+}
+
+@media (max-width: 600px) {
+    .agendamento-container, .form-container, form, #agendamentoForm {
+        padding: 22px 8vw 18px 8vw;
+        max-width: 98vw;
+    }
+} 

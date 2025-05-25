@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Barbearia</title>
+    <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+    <button id="btn-lupa" title="Consultar agendamentos" style="position: absolute; top: 24px; left: 60px; background: none; border: none; cursor: pointer; z-index: 10; padding: 0;">
+        <img src="tesoura.png" alt="Tesoura" style="width:64px; height:64px; filter: drop-shadow(0 0 2px #1a3a5d);">
+    </button>
+    <div id="modal-agendamentos" class="modal-agendamentos" style="display:none;">
+        <div class="modal-content">
+            <span id="fechar-modal" class="fechar-modal">&times;</span>
+            <h3>Meus Agendamentos</h3>
+            <ul id="lista-agendamentos"></ul>
+        </div>
+    </div>
+    <div class="agendamento-container">
+        <h2>Agendar Cliente</h2>
+        <form id="agendamentoForm">
+            <input type="text" id="nome" name="nome" placeholder="Nome do Cliente" required>
+            <input type="text" id="telefone" name="telefone" placeholder="Telefone" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="date" id="data" name="data" required>
+            <input type="time" id="horario" name="horario" required>
+            <button type="submit">Agendar</button>
+        </form>
+        <a href="login.html" id="voltar">Sair</a>
+        <div id="mensagem-agendamento"></div>
+    </div>
+    <script src="agendamento.js"></script>
+</body>
+</html> 

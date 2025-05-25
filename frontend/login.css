@@ -1,0 +1,122 @@
+body {
+    background: url('barbearia-bg.jpg.png') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: none;
+}
+
+.login-main-wrapper.center-form {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: transparent;
+    z-index: 1;
+}
+
+.login-container {
+    background: rgba(255,255,255,0.90);
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 38px 32px 28px 32px;
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container h2 {
+    margin-bottom: 22px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #1a3a5d;
+    font-size: 2rem;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border: 1.5px solid #bdbdbd;
+    border-radius: 6px;
+    background: #eaf3fa;
+    color: #1a3a5d;
+    font-size: 1rem;
+    transition: border 0.2s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-container input:focus {
+    border: 1.5px solid #e74c3c;
+    background: #fff;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #e74c3c 0%, #1a3a5d 100%);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(26,58,93,0.08);
+}
+
+.login-container button:hover {
+    background: linear-gradient(90deg, #1a3a5d 0%, #e74c3c 100%);
+    box-shadow: 0 4px 16px rgba(26,58,93,0.12);
+}
+
+#cadastro-link {
+    color: #e74c3c;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+    font-size: 15px;
+    background: transparent;
+    transition: color 0.2s;
+}
+
+#cadastro-link:hover {
+    text-decoration: underline;
+    color: #1a3a5d;
+}
+
+#mensagem-erro {
+    color: #e74c3c;
+    margin-top: 12px;
+    font-size: 14px;
+    min-height: 18px;
+    text-align: center;
+    background: transparent;
+}
+
+.login-image-wrapper {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        padding: 22px 8vw 18px 8vw;
+        max-width: 98vw;
+    }
+    .login-main-wrapper.center-form {
+        padding: 0;
+    }
+} 

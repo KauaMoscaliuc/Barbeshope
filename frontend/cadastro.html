@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Barbearia</title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <div class="cadastro-container">
+        <h2>Cadastro de Barbeiro</h2>
+        <form id="cadastroForm">
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <input type="text" id="endereco" name="endereco" placeholder="Endereço" required>
+            <input type="number" id="idade" name="idade" placeholder="Idade" min="16" required>
+            <input type="password" id="senha" name="senha" placeholder="Senha" required>
+            <input type="hidden" id="tipo" name="tipo" value="Barbeiro">
+            <button type="submit">Cadastrar</button>
+        </form>
+        <a href="login.html" id="voltar-login">Já tem conta? Faça login</a>
+        <div id="mensagem-cadastro"></div>
+    </div>
+    <script src="cadastro.js"></script>
+</body>
+</html> 
